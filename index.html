@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VEMO — Central Financiera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1F5454;
+    --forest-dark:#123434;
+    --teal:#11ABAB;
+    --mint:#7BDADA;
+    --red:#C0392B;
+    --green:#117A45;
+    --gold:#F0C058;
+    --salmon:#F0A078;
+    --cream:#F5ECE2;
+    --bg:#F4F7F7;
+    --card:#FFFFFF;
+    --ink:#13302E;
+    --sub:#5C7876;
+    --border:#E3ECEC;
+    --shadow: 0 10px 30px rgba(19,48,46,.08);
+    --shadow-hover: 0 20px 45px rgba(17,171,171,.22);
+  }
+  body.dark{
+    --bg:#0E2323;
+    --card:#153A3A;
+    --ink:#EAF5F5;
+    --sub:#9FC4C2;
+    --border:#1F4C4C;
+    --shadow: 0 10px 30px rgba(0,0,0,.35);
+    --shadow-hover: 0 20px 45px rgba(17,171,171,.35);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+    display:flex;
+    transition:background .35s ease, color .35s ease;
+  }
+  .sidebar{
+    width:44px;
+    min-height:100vh;
+    background:linear-gradient(180deg,var(--teal),var(--forest));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .sidebar span{
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    color:#fff;
+    letter-spacing:.28em;
+    font-size:11px;
+    font-weight:600;
+    font-family:'Inter',sans-serif;
+    opacity:.92;
+    white-space:nowrap;
+  }
+  .main{
+    flex:1;
+    padding:48px 56px 32px;
+    max-width:1180px;
+    margin:0 auto;
+    width:100%;
+  }
+  header.top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-bottom:8px;
+  }
+  .title-block h1{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:44px;
+    margin:0;
+    color:var(--forest);
+    letter-spacing:-.5px;
+  }
+  body.dark .title-block h1{color:#EAF5F5;}
+  .title-block h1 span{color:var(--teal);}
+  .title-block p{
+    margin:8px 0 0;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--sub);
+  }
+  .top-actions{display:flex; align-items:center; gap:10px;}
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--cream);
+    color:var(--forest);
+    font-size:12px;
+    font-weight:600;
+    padding:8px 14px;
+    border-radius:20px;
+    border:1px solid var(--border);
+  }
+  body.dark .badge{background:#1F4C4C; color:#EAF5F5;}
+  .icon-btn{
+    width:38px;height:38px;
+    border-radius:50%;
+    border:1px solid var(--border);
+    background:var(--card);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    font-size:16px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    color:var(--ink);
+  }
+  .icon-btn:hover{transform:translateY(-2px); box-shadow:var(--shadow);}
+
+  .divider{
+    height:1px;
+    background:var(--border);
+    margin:28px 0 36px;
+  }
+
+  .section-label{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin:0 0 18px;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
+
+  .card{
+    position:relative;
+    display:block;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:30px 26px 26px;
+    text-decoration:none;
+    color:inherit;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s cubic-bezier(.2,.8,.2,1), border-color .35s ease;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0; height:5px;
+    background:linear-gradient(90deg,var(--accent-a),var(--accent-b));
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform .45s cubic-bezier(.2,.8,.2,1);
+  }
+  .card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow-hover);
+    border-color:var(--teal);
+  }
+  .card:hover::before{transform:scaleX(1);}
+  .card:hover .icon-circle{transform:scale(1.08) rotate(-4deg);}
+  .card:hover .go-arrow{transform:translateX(4px);}
+
+  .icon-circle{
+    width:74px;height:74px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--accent-bg);
+    margin-bottom:20px;
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .icon-circle svg{width:36px;height:36px;}
+
+  .card h2{
+    font-family:'Poppins',sans-serif;
+    font-size:26px;
+    font-weight:700;
+    margin:0 0 4px;
+    color:var(--forest);
+  }
+  body.dark .card h2{color:#EAF5F5;}
+  .card h2 b{color:var(--teal);}
+  .card p.desc{
+    margin:0 0 6px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--sub);
+  }
+  .card p.tag{
+    margin:0 0 22px;
+    font-size:14px;
+    color:var(--sub);
+    line-height:1.5;
+  }
+  .card .go{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:13px;
+    font-weight:700;
+    color:var(--teal);
+    padding-top:16px;
+    border-top:1px dashed var(--border);
+  }
+  .go-arrow{display:inline-block; transition:transform .3s ease;}
+
+  .vcn{ --accent-a:#11ABAB; --accent-b:#7BDADA; --accent-bg:#E4F6F6; }
+  .lto{ --accent-a:#F0C058; --accent-b:#F0A078; --accent-bg:#FBF0DD; }
+  .dae{ --accent-a:#F0A078; --accent-b:#C0392B; --accent-bg:#FBE7DD; }
+  body.dark .vcn{ --accent-bg:#0E3838; }
+  body.dark .lto{ --accent-bg:#3A3020; }
+  body.dark .dae{ --accent-bg:#3A2620; }
+
+  footer{
+    margin-top:44px;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:12px;
+    color:var(--sub);
+  }
+  footer b{color:var(--forest);}
+  body.dark footer b{color:#EAF5F5;}
+
+  @keyframes fadeUp{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .card{animation:fadeUp .6s cubic-bezier(.2,.8,.2,1) both;}
+  .card:nth-child(1){animation-delay:.05s;}
+  .card:nth-child(2){animation-delay:.15s;}
+  .card:nth-child(3){animation-delay:.25s;}
+  .title-block{animation:fadeUp .5s ease both;}
+</style>
+</head>
+<body>
+
+  <div class="sidebar"><span>VEMO MONTHLY FINANCIAL REVIEW</span></div>
+
+  <div class="main">
+    <header class="top">
+      <div class="title-block">
+        <h1>VEMO — <span>Central Financiera</span></h1>
+        <p>Grupo VEMO · Selecciona una unidad de negocio</p>
+      </div>
+      <div class="top-actions">
+        <span class="badge">📅 Datos actualizados · May 26</span>
+        <button class="icon-btn" id="themeToggle" title="Modo oscuro/claro">🌙</button>
+      </div>
+    </header>
+
+    <div class="divider"></div>
+
+    <p class="section-label">Unidades de negocio</p>
+
+    <div class="grid">
+
+      <a class="card vcn" href="https://vemo-fp-a.github.io/VCN-EXECUTIVE-SMRY/" target="_self">
+        <div class="icon-circle">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 6h14a2 2 0 0 1 2 2v32a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" stroke="#0C6660" stroke-width="2.4"/>
+            <path d="M20 4v4M22 4v4" stroke="#0C6660" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M25 16 18 27h5l-2 9 9-13h-5l2-7Z" fill="#11ABAB"/>
+          </svg>
+        </div>
+        <p class="desc">Charging Network</p>
+        <h2>V<b>CN</b></h2>
+        <p class="tag">Red de carga · Conectores activos, throughput y financiero de la red VEMO.</p>
+        <div class="go">Ver dashboard <span class="go-arrow">→</span></div>
+      </a>
+
+      <a class="card lto" href="https://vemo-fp-a.github.io/LTO-Dashboard/" target="_self">
+        <div class="icon-circle">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="6" y="18" width="26" height="16" rx="3" stroke="#8A5A1E" stroke-width="2.4"/>
+            <circle cx="14" cy="34" r="3" fill="#F0A078"/>
+            <circle cx="26" cy="34" r="3" fill="#F0A078"/>
+            <path d="M8 18l3-8h14l4 8" stroke="#8A5A1E" stroke-width="2.4" stroke-linejoin="round"/>
+            <path d="M34 12h6a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-6" stroke="#F0A078" stroke-width="2.2"/>
+            <path d="M37 12v7" stroke="#F0A078" stroke-width="2.2"/>
+          </svg>
+        </div>
+        <p class="desc">Lease-to-Own Financing</p>
+        <h2>L<b>TO</b></h2>
+        <p class="tag">VEMO Impulso · Financiamiento de vehículos, cartera y desempeño mensual.</p>
+        <div class="go">Ver dashboard <span class="go-arrow">→</span></div>
+      </a>
+
+      <a class="card dae" href="https://vemo-fp-a.github.io/DAE-EXECUTIVE-SUMMARY/" target="_self">
+        <div class="icon-circle">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="15" stroke="#A63A25" stroke-width="2.6"/>
+            <circle cx="24" cy="24" r="4.5" fill="#C0392B"/>
+            <path d="M24 9v8M24 31v8M9 24h8M31 24h8" stroke="#A63A25" stroke-width="2.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <p class="desc">Driving As Employee</p>
+        <h2>D<b>AE</b></h2>
+        <p class="tag">Ride-hailing · Flota, drivers activos y financiero de la operación diaria.</p>
+        <div class="go">Ver dashboard <span class="go-arrow">→</span></div>
+      </a>
+
+    </div>
+
+    <footer>
+      <div><b>VEMO</b> · Central Financiera de Grupo</div>
+      <div>Strictly Private &amp; Confidential</div>
+    </footer>
+  </div>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const body = document.body;
+  if(localStorage.getItem('vemo-hub-theme') === 'dark'){
+    body.classList.add('dark');
+    toggle.textContent = '☀️';
+  }
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    const isDark = body.classList.contains('dark');
+    toggle.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('vemo-hub-theme', isDark ? 'dark' : 'light');
+  });
+</script>
+
+</body>
+</html>
