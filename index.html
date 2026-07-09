@@ -175,18 +175,21 @@
     border-color:var(--teal);
   }
   .card:hover::before{transform:scaleX(1);}
-  .card:hover .icon-circle{transform:scale(1.08) rotate(-4deg);}
   .card:hover .go-arrow{transform:translateX(4px);}
 
-  .icon-circle{
-    width:74px;height:74px;
-    border-radius:50%;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--accent-bg);
-    margin-bottom:20px;
+  .logo-tile{
+    height:56px;
+    display:flex;
+    align-items:center;
+    margin-bottom:22px;
     transition:transform .35s cubic-bezier(.2,.8,.2,1);
   }
-  .icon-circle svg{width:36px;height:36px;}
+  .logo-tile img{
+    height:100%;
+    width:auto;
+    display:block;
+  }
+  .card:hover .logo-tile{transform:scale(1.06);}
 
   .card h2{
     font-family:'Poppins',sans-serif;
@@ -223,9 +226,9 @@
   }
   .go-arrow{display:inline-block; transition:transform .3s ease;}
 
-  .vcn{ --accent-a:#11ABAB; --accent-b:#7BDADA; --accent-bg:#E4F6F6; }
-  .lto{ --accent-a:#F0C058; --accent-b:#F0A078; --accent-bg:#FBF0DD; }
-  .dae{ --accent-a:#F0A078; --accent-b:#C0392B; --accent-bg:#FBE7DD; }
+  .vcn{ --accent-a:#005A5A; --accent-b:#00C864; --accent-bg:#E4F6F6; }
+  .lto{ --accent-a:#005A5A; --accent-b:#DCBE78; --accent-bg:#FBF0DD; }
+  .dae{ --accent-a:#005A5A; --accent-b:#FA8CA0; --accent-bg:#FBE7DD; }
   body.dark .vcn{ --accent-bg:#0E3838; }
   body.dark .lto{ --accent-bg:#3A3020; }
   body.dark .dae{ --accent-bg:#3A2620; }
@@ -278,46 +281,22 @@
     <div class="grid">
 
       <a class="card vcn" href="https://vemo-fp-a.github.io/VCN-EXECUTIVE-SMRY/" target="_self">
-        <div class="icon-circle">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14 6h14a2 2 0 0 1 2 2v32a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z" stroke="#0C6660" stroke-width="2.4"/>
-            <path d="M20 4v4M22 4v4" stroke="#0C6660" stroke-width="2.4" stroke-linecap="round"/>
-            <path d="M25 16 18 27h5l-2 9 9-13h-5l2-7Z" fill="#11ABAB"/>
-          </svg>
-        </div>
         <p class="desc">Charging Network</p>
-        <h2>V<b>CN</b></h2>
+        <div class="logo-tile"><img src="logos/vcn.png" alt="VCN — VEMO Charging"></div>
         <p class="tag">Red de carga · Conectores activos, throughput y financiero de la red VEMO.</p>
         <div class="go">Ver dashboard <span class="go-arrow">→</span></div>
       </a>
 
       <a class="card lto" href="https://vemo-fp-a.github.io/LTO-Dashboard/" target="_self">
-        <div class="icon-circle">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="6" y="18" width="26" height="16" rx="3" stroke="#8A5A1E" stroke-width="2.4"/>
-            <circle cx="14" cy="34" r="3" fill="#F0A078"/>
-            <circle cx="26" cy="34" r="3" fill="#F0A078"/>
-            <path d="M8 18l3-8h14l4 8" stroke="#8A5A1E" stroke-width="2.4" stroke-linejoin="round"/>
-            <path d="M34 12h6a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-6" stroke="#F0A078" stroke-width="2.2"/>
-            <path d="M37 12v7" stroke="#F0A078" stroke-width="2.2"/>
-          </svg>
-        </div>
         <p class="desc">Lease-to-Own Financing</p>
-        <h2>L<b>TO</b></h2>
+        <div class="logo-tile"><img src="logos/lto.png" alt="LTO — VEMO Impulso"></div>
         <p class="tag">VEMO Impulso · Financiamiento de vehículos, cartera y desempeño mensual.</p>
         <div class="go">Ver dashboard <span class="go-arrow">→</span></div>
       </a>
 
       <a class="card dae" href="https://vemo-fp-a.github.io/DAE-EXECUTIVE-SUMMARY/" target="_self">
-        <div class="icon-circle">
-          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="15" stroke="#A63A25" stroke-width="2.6"/>
-            <circle cx="24" cy="24" r="4.5" fill="#C0392B"/>
-            <path d="M24 9v8M24 31v8M9 24h8M31 24h8" stroke="#A63A25" stroke-width="2.6" stroke-linecap="round"/>
-          </svg>
-        </div>
         <p class="desc">Driving As Employee</p>
-        <h2>D<b>AE</b></h2>
+        <div class="logo-tile"><img src="logos/dae.png" alt="DAE — VEMO Conduce"></div>
         <p class="tag">Ride-hailing · Flota, drivers activos y financiero de la operación diaria.</p>
         <div class="go">Ver dashboard <span class="go-arrow">→</span></div>
       </a>
@@ -347,3 +326,4 @@
 
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
