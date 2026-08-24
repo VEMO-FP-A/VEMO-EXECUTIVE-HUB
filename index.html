@@ -142,7 +142,7 @@
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(4, 1fr);
     gap:26px;
   }
   @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
@@ -229,6 +229,8 @@
   .vcn{ --accent-a:#005A5A; --accent-b:#00C864; --accent-bg:#E4F6F6; }
   .lto{ --accent-a:#005A5A; --accent-b:#DCBE78; --accent-bg:#FBF0DD; }
   .dae{ --accent-a:#005A5A; --accent-b:#FA8CA0; --accent-bg:#FBE7DD; }
+  .ev{ --accent-a:#005A5A; --accent-b:#11ABAB; --accent-bg:#E4F6F6; }
+  body.dark .ev{ --accent-bg:#0E3838; }
   body.dark .vcn{ --accent-bg:#0E3838; }
   body.dark .lto{ --accent-bg:#3A3020; }
   body.dark .dae{ --accent-bg:#3A2620; }
@@ -300,6 +302,13 @@
         <div class="go">View dashboard <span class="go-arrow">→</span></div>
       </a>
 
+      <a class="card ev" href="https://davidvemo.github.io/EV_DASHBOARD/" target="_self">
+        <p class="desc">EV-Fleets</p>
+        <div class="logo-tile"><img src="logos/ev.png" alt="EV — FLEETS"></div>
+        <p class="tag">Electric vehicle fleet · Fleet performance, utilization, and financials.</p>
+        <div class="go">View dashboard <span class="go-arrow">→</span></div>
+      </a>
+      
     </div>
 
     <footer>
