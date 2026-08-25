@@ -142,10 +142,10 @@
 
   .grid{
     display:grid;
-    grid-template-columns:repeat(4, 1fr);
+    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
     gap:26px;
   }
-  @media (max-width:900px){ .grid{grid-template-columns:1fr;} }
+  @media (max-width:640px){ .grid{grid-template-columns:1fr;} }
 
   .card{
     position:relative;
@@ -191,6 +191,17 @@
   }
   .card:hover .logo-tile{transform:scale(1.06);}
 
+  .logo-tile.text-logo{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:26px;
+    letter-spacing:-.3px;
+    white-space:nowrap;
+  }
+  .logo-tile.text-logo .lt-vemo{color:var(--forest);}
+  body.dark .logo-tile.text-logo .lt-vemo{color:#EAF5F5;}
+  .logo-tile.text-logo .lt-word{color:var(--accent-b);}
+
   .card h2{
     font-family:'Poppins',sans-serif;
     font-size:26px;
@@ -229,11 +240,11 @@
   .vcn{ --accent-a:#005A5A; --accent-b:#00C864; --accent-bg:#E4F6F6; }
   .lto{ --accent-a:#005A5A; --accent-b:#DCBE78; --accent-bg:#FBF0DD; }
   .dae{ --accent-a:#005A5A; --accent-b:#FA8CA0; --accent-bg:#FBE7DD; }
-  .ev{ --accent-a:#005A5A; --accent-b:#11ABAB; --accent-bg:#E4F6F6; }
-  body.dark .ev{ --accent-bg:#0E3838; }
+  .evf{ --accent-a:#005A5A; --accent-b:#2EC4F1; --accent-bg:#E2F4FC; }
   body.dark .vcn{ --accent-bg:#0E3838; }
   body.dark .lto{ --accent-bg:#3A3020; }
   body.dark .dae{ --accent-bg:#3A2620; }
+  body.dark .evf{ --accent-bg:#0E3040; }
 
   footer{
     margin-top:44px;
@@ -257,6 +268,7 @@
   .card:nth-child(1){animation-delay:.05s;}
   .card:nth-child(2){animation-delay:.15s;}
   .card:nth-child(3){animation-delay:.25s;}
+  .card:nth-child(4){animation-delay:.35s;}
   .title-block{animation:fadeUp .5s ease both;}
 </style>
 </head>
@@ -302,13 +314,13 @@
         <div class="go">View dashboard <span class="go-arrow">→</span></div>
       </a>
 
-      <a class="card ev" href="https://davidvemo.github.io/EV_DASHBOARD/" target="_self">
-        <p class="desc">EV-Fleets</p>
-        <div class="logo-tile"><img src="logos/ev.png" alt="EV — FLEETS"></div>
-        <p class="tag">Electric vehicle fleet · Fleet performance, utilization, and financials.</p>
+      <a class="card evf" href="https://vemo-fp-a.github.io/EV_DASHBOARD/" target="_self">
+        <p class="desc">EV Fleet Management</p>
+        <div class="logo-tile text-logo"><span class="lt-vemo">VEMO</span><span class="lt-word">EVFLEETS</span></div>
+        <p class="tag">EPC &amp; ZEE · Fleet financials, revenue, and commercial performance.</p>
         <div class="go">View dashboard <span class="go-arrow">→</span></div>
       </a>
-      
+
     </div>
 
     <footer>
